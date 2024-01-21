@@ -17,32 +17,13 @@
         body {
             background: url('giphy.gif') no-repeat center center fixed;
             background-size: cover;
-            transition: background-image 1s ease-in-out; /* Add a smooth transition effect */
+            transition: background-image 1s ease-in-out;
         }
 
-        /* Add padding to the container on phone screens */
         @media only screen and (max-width: 200px) {
             .container {
                 padding: 15%;
             }
-        }
-
-        /* Keyframes animation to change background image every 20 seconds */
-        @keyframes img changeBackground {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Apply the animation to body element */
-        body.change {
-            animation: changeBackground 20s linear infinite;
         }
     </style>
 </head>
