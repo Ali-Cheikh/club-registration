@@ -19,12 +19,21 @@
             background-size: cover;
             transition: background-image 1s ease-in-out;
         }
+        .card{
+            background-color: #f2f2f2;
+            margin-top: 50%;
+        }
+        @media (min-width:700px) {
+            .card{
+                background-color: #f2f2f2;
+                margin-top: 10%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row justify-content-center align-items-center" style="height:100vh">
-            <div class="">
+        <div class="justify-content-center align-items-center">
                 <div class="card">
                     <div class="card-header">
                         Hiring Form Application
@@ -64,7 +73,6 @@
                 </div>
             </div>
         </div>
-    </div>
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', () => {
     document.querySelector('.nav').classList.toggle('show');
