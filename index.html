@@ -7,11 +7,11 @@
     <title>Club Registration| Det.lfba</title>
     <link rel="icon" href="logo.png" type="image/x-icon">
     <meta property="og:title" content="Registration Form | Det.lfba">
-    <meta property="og:description" content="il tasgil min houni 3an tar9 type form fill it all">
-    <meta name="description" content="Det.lfba -> registration form: to become a member fill this form">
+    <meta property="og:description" content="Submit for hiring Application">
+    <meta name="description" content="Det.lfba -> Submit for hiring Application">
     <meta property="og:image" content="https://cdn.discordapp.com/attachments/1153418992124436492/1164177752744796230/logo_det_whitee.png?ex=65424405&is=652fcf05&hm=c75ccb84c42a69c18cfd463b72387fc5a33623d724fa8c3eb2885f15b6b3faa6&">
     <meta name="twitter:title" content="Registration Form | Det.lfba">
-    <meta name="twitter:description" content="il tasgil min houni 3an tar9 type form fill it all">
+    <meta name="twitter:description" content="Submit for hiring Application">
     <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/1153418992124436492/1164177752744796230/logo_det_whitee.png?ex=65424405&is=652fcf05&hm=c75ccb84c42a69c18cfd463b72387fc5a33623d724fa8c3eb2885f15b6b3faa6&">
     <style type="text/css">
         body {
@@ -33,29 +33,29 @@
                         <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfV0uxZiZrqcuT0Q9lMIXhiis3LJid-M00OyP1BOkYhn5GNow/formResponse" method="POST">
                             <div class="form-group">
                                 <label for="name">Full Name:</label>
-                                <input required type="text" name="entry.2005620554" class="form-control" id="Name" value="" placeholder="Enter Your Full Name">
+                                <input required type="text" name="name" class="form-control" id="Name" value="" placeholder="Enter Your Full Name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address:</label>
-                                <input required type="email" name="entry.1045781291" class="form-control" id="Email" value="" placeholder="Enter Your Email-Address">
+                                <input required type="email" name="email" class="form-control" id="Email" value="" placeholder="Enter Your Email-Address">
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone Number:</label>
-                                <input required type="text" name="entry.1166974658" class="form-control" id="Number" value="" placeholder="Enter Your Phone Number">
+                                <input required type="text" name="phone" class="form-control" id="Number" value="" placeholder="Enter Your Phone Number">
                             </div>
                             <div class="form-group">
                                 <label for="class-select">Class:</label>
-                                <select required class="form-control" name="entry.1065046570" id="class-select">
+                                <select required class="form-control" name="year" id="class-select">
                                     <option value="class">--Please Select class--</option>
-                                    <option class="form-check-input" type="checkbox" name="entry.1065046570" value="pre" id="option">1ere</option>
-                                    <option class="form-check-input" type="checkbox" name="entry.1065046570" value="du" id="option">2eme</option>
-                                    <option class="form-check-input" type="checkbox" name="entry.1065046570" value="tre" id="option">3eme</option>
-                                    <option class="form-check-input" type="checkbox" name="entry.1065046570" value="tre" id="option">4eme</option>
+                                    <option class="form-check-input" type="checkbox"  value="1ere" id="option">1ere</option>
+                                    <option class="form-check-input" type="checkbox"  value="2eme" id="option">2eme</option>
+                                    <option class="form-check-input" type="checkbox"  value="3eme" id="option">3eme</option>
+                                    <option class="form-check-input" type="checkbox"  value="4eme" id="option">4eme</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="question">3andik mat9oul?</label>
-                                <textarea required name="entry.839337160" class="form-control" id="question"></textarea>
+                                <textarea required name="question" class="form-control" id="question"></textarea>
                             </div>
                             <button type="reset" class="btn btn-outline-secondary">Reset</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -65,6 +65,79 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.querySelector('.nav').classList.toggle('show');
+});
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwrB3Khh2EX4HNRwUufpcYwJ7ENiRYRPCHGg_5ae3MMmPg_gwM5Wnnde5EmY1zOsqQ1/exec';
+
+$(document).ready(function () {
+    $('#contact-form').on('submit', function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            icon: 'info',
+            title: 'Please wait...',
+            text: 'Sending your message',
+            willOpen: () => {
+                Swal.showLoading();
+            },
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            background: "#00ACA8"
+        });
+
+        const formData = new FormData(this);
+
+        $.ajax({
+            url: scriptURL,
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                console.log("Response from Google Sheets:", data);
+
+                if (data.result === 'success') {
+                    Swal.fire({
+                        imageUrl: "assets/images/Lingoland_logo.png",
+                        imageAlt: "Custom Success Icon",
+                        title: 'Success!',
+                        text: 'Your message is sent. Thank you for reaching out.',
+                        width: 600,
+                        padding: "3em",
+                        timer: 5000,
+                        timerProgressBar: true,
+                        showConfirmButton: false,
+                        allowOutsideClick: false,
+                        color: "#000",
+                        background: "#00ACA8",
+                        backdrop: "rgba(0,0,0,0.4)",
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    console.error('Error:', data.error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong! Please try again later.',
+                    });
+                }
+            },
+            error: function (error) {
+                console.error('Error!', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'An unexpected error occurred. Please try again later.',
+                });
+            }
+        });
+    });
+});
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
