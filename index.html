@@ -20,6 +20,8 @@
             background-size: cover;
             transition: background-image 1s ease-in-out;
             color: #f2f2f2;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .card {
@@ -89,6 +91,31 @@
                 margin-top: 30%;
             }
         }
+        q{
+            font-size: 18px;
+            font-style: italic;
+            font-weight:400;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .text{
+            text-transform: uppercase;
+            background-image: linear-gradient(to right, #00F260, #f79d00, #cadaeb, #64f38c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            background-size: 300%;
+            background-position: -100%;
+
+            animation: animatedText 2s infinite alternate-reverse;
+            }
+
+            @keyframes animatedText{
+                to{
+                    background-position: 100%;
+                }
+            }
     </style>
 </head>
 
@@ -96,8 +123,11 @@
     <div class="container">
         <div class="justify-content-center align-items-center">
             <div class="card">
-                <div class="card-header">
-                    Hiring Form Application
+                <div class="card-header text">
+                    <div style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+                        Hiring Form Application
+                    </div>
+                    <q >welcome to the team</q>
                 </div>
                 <div class="card-body">
                     <form id="contact-form" method="POST">
@@ -124,8 +154,17 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="question">3andik mat9oul?</label>
-                            <textarea required name="question" class="form-control" id="question" placeholder="Enter your answer"></textarea>
+                            <label for="question">Area of expertise 🚀</label>
+                            <select required class="form-control" name="year" id="class-select">
+                                <option value="">--Your Passion/Job--</option>
+                                <option class="form-check-input" value="nothing">Nothing/idk</option>
+                                <option class="form-check-input" value="Programmer" style="color: orange;">Programmer</option>
+                                <option class="form-check-input" value="Designer" style="color: rgb(194, 99, 165);">Designer</option>
+                                <option class="form-check-input" value="Entrepreneur" style="color: gold;">Entrepreneur</option>
+                                <option class="form-check-input" value="Editor" style="color: #005bb5;">Editor</option>
+                                <option class="form-check-input" value="Photographer" style="color: lightgreen;">Photographer</option>
+
+                            </select>
                         </div>
                         <div class="text-center">
                             <button type="reset" class="btn btn-outline-secondary">Reset</button>
@@ -136,6 +175,11 @@
             </div>
         </div>
     </div>
+    <footer class="sticky-botom">
+        <center>
+            <q>detlfba@gmail.com 2024-2025</q>
+        </center>
+    </footer>
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
